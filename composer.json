@@ -1,0 +1,12 @@
+{
+    "name": "johnsaf/kanban",
+    "description": "Tablero Kanban",
+    "authors": [
+        {
+            "name": "John Arenales"
+        }
+    ],
+    "require": {
+        "mongodb/mongodb": "^1.20"
+    }
+}
