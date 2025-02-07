@@ -1,0 +1,44 @@
+.cuerpo{
+
+      width: 100%;
+      border: solid 1px;
+      color: white;
+}
+*{
+      margin: 0;
+      padding: 0;
+}
+body{
+      width: 100%;
+}
+header{
+      width: 100%;
+      background: magenta;
+}
+footer{
+      width: 100%;
+      color: rgb(255, 255, 255);
+      background: black;
+}
+
+/**/
+
+.contenedor{
+      width: 99%;
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      border: solid;
+
+}
+.idea{
+      background: red;
+}
+.todo{
+      background: rgb(0, 119, 255);
+}
+.doing{
+      background: rgb(47, 255, 64);
+}
+.done{
+      background: yellow;
+}
