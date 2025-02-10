@@ -11,16 +11,30 @@
       <header>
             INICIO
       </header>
-      <h1>INICIASTE SESION mmgvo</h1>
+      <h1>
+            INICIASTE SESION 
+      </h1>
       <div class="contenedor">
-            <div class="idea">IDEA</div>
-            <div class="todo">TO DO</div>
-            <div class="doing">DOING</div>
-            <div class="done">DONE</div>
+            <div class="idea"><h1>IDEA</h1></div>
+            <div class="todo"><h1>TO DO</h1></div>
+            <div class="doing"><h1>DOING</h1></div>
+            <div class="done"><h1>DONE</h1></div>
       </div>
       <footer>
             FIN @copyright
       </footer>
+      <br>
+      <div class="contenedorFormulario">
+            <form action="/src/backend/crearTarjetas.php" method="post">
+                  <input type="text" placeholder="nombre" name="nombre">
+                  <input type="text" placeholder="descripcion" name="descripcion">
+                  <input type="text" placeholder="estado" name="estado">
+                  <input type="radio" placeholder="participantes" name="participantes">
+                  <input type="submit" value="Enviar">
+                  <input type="reset" value="vaciar">
+            </form>
+      </div>
+
       <script src="tarjetas.js" type="text/javascript"></script>
 </body>
 </html>

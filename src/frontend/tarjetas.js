@@ -1,7 +1,7 @@
 "use strict";
 
 async function obtenerPhp(url) {
-      // 👇 URL to your data location
+      // 👇 URL 
       return new Promise((resolve, reject) => {
             fetch(url) 
             .then(response => response.json())
@@ -23,22 +23,26 @@ $(document).ready(async function () {
       //$(".cuerpo").append(JSON.stringify(phpJSON));
       for (let i = 0; i < phpJSON.length; i++) {
             
-            console.log(JSON.stringify(phpJSON[i].estado))
-            switch (phpJSON[i].estado) {
-                  case "Idea":
+            //console.log(JSON.stringify(phpJSON[i].estado))
+            switch (phpJSON[i].estado.toLowerCase().trim()) {
+                  case "idea":
                         $(".idea").append(`<div>${phpJSON[i].nombre}</div>`);
                         break;
-                  case "To Do":
+
+                  case "to do":
                         $(".todo").append(`<div>${phpJSON[i].nombre}</div>`);
                         break;
-                  case "Doing":
-                        $("doing").append(`<div>${phpJSON[i].nombre}</div>`);
+
+                  case "doing":
+                        $(".doing").append(`<div>${phpJSON[i].nombre}</div>`);
                         break;
-                  case "Done":
+
+                  case "done":
                         $(".done").append(`<div>${phpJSON[i].nombre}</div>`);
                         break;
                   default:
-                        
+                        console.error("la tarjeta de nombre:"+phpJSON[i].nombre+"Con _id"+phpJSON[i]._id+" Tiene un estado invalido");
+
                         break;
             }
             

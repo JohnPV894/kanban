@@ -13,7 +13,7 @@ body{
 }
 header{
       width: 100%;
-      background: magenta;
+      background: maroon;
 }
 footer{
       width: 100%;
@@ -41,4 +41,17 @@ footer{
 }
 .done{
       background: yellow;
+}
+/**/
+.contenedor>div>h1{
+      text-align: center;
+      color: white;
+      padding: 20px 0px;
+}
+.contenedor>div>div{
+      background: white;
+      border: solid 1px ;
+      border-radius: 14px;
+      padding: 20px 0px;
+      margin: 5px 20px;
 }

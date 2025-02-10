@@ -16,4 +16,24 @@ catch(Exception $e){
 $BD_kanban= $clienteMongoDB->selectDatabase("kanban");
 $coleccion_sesiones= $BD_kanban->selectCollection("tablero");
 
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+      $nombreTarjeta = $_POST["nombre"];
+      $descripcionTarjeta = $_POST["descripcion"];
+      $estadoTarjeta = $_POST["estado"];
+      $participantesTarjeta = $_POST["participantes"];
+
+      if (empty($nombreTarjeta) || empty($descripcionTarjeta) || empty($estadoTarjeta) || empty($participantesTarjeta)) {
+            exit();
+      };
+
+      $nuevaTarjeta=array(
+            "nombre"=> $nombreTarjeta,
+            "descripcion"=> $descripcionTarjeta,
+            "estado"=> "Idea",
+            "participantes"=> $participantesTarjeta //Objetivo almacenar una lista de _id de las sesiones asosiadas a estar tarjeta
+      );
+      echo json_encode($nuevaTarjeta);
+      $coleccion_sesiones->insertOne($nuevaTarjeta);
+
+} 
 ?>
