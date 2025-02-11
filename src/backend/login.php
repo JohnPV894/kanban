@@ -17,19 +17,28 @@ $BD_kanban= $clienteMongoDB->selectDatabase("kanban");
 $coleccion_sesiones= $BD_kanban->selectCollection("sesiones");
 
 function validarSesion($coleccion,$usuario,$clave) {
-      #$login ;
-      #$datosSesion;
-      #$a = array("login"=>$login,"sesion"=>$datosSesion);
+
  
       if (empty($coleccion) || empty($usuario) || empty($clave)) {
            echo "Faltan parametros en la funcion validarSesion";
-          # $a->login= false;
+
       }
       try {
             $consulta=$coleccion->findOne([
                   "usuario"=>$usuario
             ]);
             if ($consulta["clave"]===$clave) {
+            //Guardando en una sesion los datos del usuario para luego identificar facilmente que tarjetas puede ver 
+                  #Crear una sesion
+                  session_start();
+                  #Organizar Datos del usuario
+                  $datosUsuario= array(
+                        "id" => (string) $consulta["_id"],
+                        "usuario"=>$consulta["usuario"],
+                        "clave"=>$consulta["clave"]
+                  );
+                  #Guardar datos del usuario
+                  $_SESSION["sesionActual"]=$datosUsuario;
                   return true;
             }else{
                   echo "contraseña o correo incorrecto";
@@ -44,32 +53,6 @@ function validarSesion($coleccion,$usuario,$clave) {
 
 
 }
-//function validarSesion($coleccion,$usuario,$clave) {
-//      $login = false;
-//      $datosSesion = false;
-//      if (empty($coleccion) || empty($usuario) || empty($clave)) {
-//      echo "Faltan parametros en la funcion validarSesion";
-//      $login= false;
-//      }
-//      try {
-//            $consulta=$coleccion->findOne([
-//                  "usuario"=>$usuario
-//            ]);
-//            if ($consulta["clave"]===$clave) {
-//                  $login= true;
-//            }else{
-//                  echo "contraseña o correo incorrecto";
-//                  $login= false;
-//
-//            }
-//      } catch (\Throwable $th) {
-//            echo "contraseña o correo incorrecto";
-//            $login= false;
-//      } finally{
-//            return array("login"=>$login,"sesion"=> $datosSesion);
-//      }
-//
-//}
 
 
 
@@ -78,12 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       $comprobarCredencialesSesion = validarSesion($coleccion_sesiones,$_POST['usuario'],$_POST['clave']);
   
       if($comprobarCredencialesSesion==true){
-            //Guardando en una sesion los datos del usuario para luego identificar facilmente que tarjetas puede ver 
-            #Crear una sesion
-            session_start();
-            $consulta = $coleccion_sesiones->find([]);
-            #Guardar datos del cliente
-            $_SESSION["sesionActual"]=array();
+
             header("Location: http://localhost:3000/src/frontend/inicio.html");
             exit;
       }

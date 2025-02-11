@@ -22,6 +22,7 @@ $(document).ready(async function () {
       //console.log(phpJSON[0] );
       //$(".cuerpo").append(JSON.stringify(phpJSON));
       for (let i = 0; i < phpJSON.length; i++) {
+            console.log(phpJSON[i].estado.toLowerCase().trim());
             
             //console.log(JSON.stringify(phpJSON[i].estado))
             switch (phpJSON[i].estado.toLowerCase().trim()) {
