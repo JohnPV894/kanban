@@ -18,7 +18,8 @@ async function obtenerPhp(url) {
 //JQUERY
 $(document).ready(async function () {
       //Recupero la coleccion Tarjetas de la BD mongo 
-      const phpJSON =await obtenerPhp("http://localhost:3000/src/backend/recuperarTarjetas.php")
+      const phpJSON =await obtenerPhp("http://localhost:3000/src/backend/recuperarTarjetas.php");
+      const phpParticipantes = await obtenerPhp("http://localhost:3000/src/backend/recuperarParticipantes.php");
       //console.log(phpJSON[0] );
       //$(".cuerpo").append(JSON.stringify(phpJSON));
       for (let i = 0; i < phpJSON.length; i++) {
@@ -46,6 +47,11 @@ $(document).ready(async function () {
 
                         break;
             }
+            
+      }
+      for (let i = 0; i < phpParticipantes.length; i++) {
+
+            $("#selectParticipantes").append(`<option value="a">${phpParticipantes[i].usuario}</option>`);
             
       }
 

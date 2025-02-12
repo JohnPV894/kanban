@@ -1,4 +1,7 @@
 <?php
 session_start();
-echo json_encode($_SESSION);
+if (!empty($_POST["participantes[]"])) {
+      $participantesSeleccionados = array($_POST["participantes[]"]);
+      echo json_encode($participantesSeleccionados); // Muestra un array con los valores seleccionados
+}
 ?>

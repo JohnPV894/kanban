@@ -21,7 +21,7 @@ function validarSesion($coleccion,$usuario,$clave) {
  
       if (empty($coleccion) || empty($usuario) || empty($clave)) {
            echo "Faltan parametros en la funcion validarSesion";
-
+           return false;
       }
       try {
             $consulta=$coleccion->findOne([
@@ -32,13 +32,23 @@ function validarSesion($coleccion,$usuario,$clave) {
                   #Crear una sesion
                   session_start();
                   #Organizar Datos del usuario
-                  $datosUsuario= array(
+                  $datosUsuario = array(
                         "id" => (string) $consulta["_id"],
-                        "usuario"=>$consulta["usuario"],
-                        "clave"=>$consulta["clave"]
+                        "usuario" =>$consulta["usuario"],
+                        "clave" =>$consulta["clave"]
                   );
+                  $datosSesiones=array();
+                  foreach ($coleccion->find([]) as $cadaDocumento ) {
+
+                        array_push($datosSesiones,array(
+                              "id" => (string) $cadaDocumento["_id"],
+                              "usuario" =>$cadaDocumento["usuario"]
+                        ));
+
+                  };
                   #Guardar datos del usuario
                   $_SESSION["sesionActual"]=$datosUsuario;
+                  $_SESSION["participantes"]=$datosSesiones;
                   return true;
             }else{
                   echo "contraseña o correo incorrecto";

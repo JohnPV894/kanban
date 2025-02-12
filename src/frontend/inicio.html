@@ -25,14 +25,14 @@
       </footer>
       <br>
       <div class="contenedorFormulario">
-            <form action="/src/backend/crearTarjetas.php" method="post">
+            <form action="/src/backend/pruebas.php" method="post">
                   <input type="text" placeholder="nombre" name="nombre">
                   <input type="text" placeholder="descripcion" name="descripcion">
                   <input type="text" placeholder="estado" name="estado">
-                  Elegir PP :<select name="" id="selectParticipantes">
-
+                  <select name="participantes[]" id="selectParticipantes"  multiple>
+                        <!---->
                   </select>
-                  <input type="text" placeholder="participantes" name="participantes">
+ 
                   <input type="submit" value="Enviar">
                   <input type="reset" value="vaciar">
             </form>
