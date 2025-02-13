@@ -54,6 +54,15 @@ $(document).ready(async function () {
             $("#selectParticipantes").append(`<option value="a">${phpParticipantes[i].usuario}</option>`);
             
       }
+      //FORMULARIO DE AGREGAR TAREA
+      $("#botonAgregarTarjeta").click(function (e) { 
+            $(".contenedorFormulario").fadeIn();
+            
+      });
+      $("#cancelarFormulario").click(function (e) { 
+            $(".contenedorFormulario").fadeOut();
+            
+      });
 
 
 });

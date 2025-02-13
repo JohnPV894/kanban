@@ -12,7 +12,17 @@
             
             <div>
                   <div class="iconEmpresa"><img src="" alt="Logo De La Empresa '' " ></div>
-                  <div class="iconCuenta"><img src="img/user.png" alt="Cuenta"></div>
+                  <!--<div class="iconCuenta"><img src="img/user.png" alt="Cuenta"></div>-->
+                  <div class="menuDesplegable">
+                        <ul>
+                              <li>
+                                    <a href="">A</a>
+                                    <a href="">A</a>
+                                    <a href="">A</a>
+                              </li>
+                        </ul>
+
+                  </div>
                   <input type="button" value="SAVE" class="guardar">
             </div>
       </header>
@@ -22,22 +32,31 @@
             <div class="todo"><h2>TO DO</h2></div>
             <div class="doing"><h2>DOING</h2></div>
             <div class="done"><h2>DONE</h2></div>
+            <div id="contenedorBoton"><button id="botonAgregarTarjeta"><img src="img/agregar.png" alt="" ></button></div>
       </div>
       <footer>
             FIN @copyright
       </footer>
       <br>
-      <div class="contenedorFormulario">
+      <div class="contenedorFormulario" >
             <form action="/src/backend/crearTarjetas.php" method="post">
-                  <input type="text" placeholder="nombre" name="nombre">
-                  <input type="text" placeholder="descripcion" name="descripcion">
+                  <h1>Creando Nueva Tarea</h1>
+                  <h3>Titulo</h3>
+                  <input type="text" placeholder="titulo" name="nombre">
+                  <h3>Descripcion</h3>
+                  <textarea name="descripcion"  placeholder="descripcion" id=""></textarea>
+
+                  <h3>Estado</h3>
                   <input type="text" placeholder="estado" name="estado">
+                  <h3>None</h3>
+                  <input type="date" placeholder="va"><input type="date" placeholder="Fecha De Fin">
+                  <h3>Participantes</h3>
                   <select name="participantes[]" id="selectParticipantes"  multiple>
                         <!---->
                   </select>
  
                   <input type="submit" value="Enviar">
-                  <input type="reset" value="vaciar">
+                  <input type="reset" value="Cancelar" id="cancelarFormulario">
             </form>
       </div>
 

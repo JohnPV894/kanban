@@ -6,6 +6,7 @@
       font-family: 'Inter', sans-serif;
 }
 body{
+      min-height: 100vh;
       width: 100%;
 }
 header{
@@ -16,11 +17,13 @@ footer{
       width: 100%;
       color: rgb(255, 255, 255);
       background: black;
+      margin-bottom: auto;
 }
 
 /**/
 
 .contenedor{
+      
       width: 100%;
       display: grid;
       grid-template-columns: repeat(4,1fr);
@@ -31,20 +34,33 @@ footer{
       margin: 0px 20px;
       border-radius: 15px;
       color: #032b27;
-      border:#3B9A33 solid 3px;
+      border:#3B9A33 solid 4px;
       background: white;
 }
-.idea{
-      background: red;
+/*Boton de agregar Tareas*/
+#contenedorBoton{
+      
+      margin-top: 1em;
+      display: flex;
+      justify-content: center;
+      background: fixed;
+      border: none;
 }
-.todo{
-      background: rgb(0, 119, 255);
+#botonAgregarTarjeta{
+      background: #34942bd3;
+      border: none;
+      border-radius: 10em;
+      padding: 10px;
 }
-.doing{
-      background: rgb(47, 255, 64);
+#botonAgregarTarjeta:hover{
+      cursor: pointer;
+      background: #215e1bd3;
 }
-.done{
-      background: yellow;
+#botonAgregarTarjeta:active{
+      background: #48ca3cd3;
+}
+#botonAgregarTarjeta img{
+      height: 64px;
 }
 /**/
 .contenedor>div>h2{
@@ -77,4 +93,23 @@ header div{
 }
 .iconEmpresa{
        justify-content:start
+}
+
+/*FORMULARIO DESPLEGABLE CREAR TAREA*/
+.contenedorFormulario{
+      height: 100vh;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.671);
+      position: absolute;
+      bottom: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+}
+.contenedorFormulario form{
+      background: #D1D1D1;
+      border: solid white 1px ;
+      height: 70%;
+      width: 25%;
+      padding: 20px 30px;
 }
