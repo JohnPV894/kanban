@@ -1,19 +1,16 @@
-.cuerpo{
 
-      width: 100%;
-      border: solid 1px;
-      color: white;
-}
 *{
+
       margin: 0;
       padding: 0;
+      font-family: 'Inter', sans-serif;
 }
 body{
       width: 100%;
 }
 header{
       width: 100%;
-      background: maroon;
+      background: #063F3A;
 }
 footer{
       width: 100%;
@@ -24,11 +21,18 @@ footer{
 /**/
 
 .contenedor{
-      width: 99%;
+      width: 100%;
       display: grid;
       grid-template-columns: repeat(4,1fr);
-      border: solid;
-
+      background: #E4E3E3;
+      padding: 6em 0em 1em 0em;
+}
+.contenedor>div{
+      margin: 0px 20px;
+      border-radius: 15px;
+      color: #032b27;
+      border:#3B9A33 solid 3px;
+      background: white;
 }
 .idea{
       background: red;
@@ -43,9 +47,8 @@ footer{
       background: yellow;
 }
 /**/
-.contenedor>div>h1{
+.contenedor>div>h2{
       text-align: center;
-      color: white;
       padding: 20px 0px;
 }
 .contenedor>div>div{
@@ -54,4 +57,24 @@ footer{
       border-radius: 14px;
       padding: 20px 0px;
       margin: 5px 20px;
+}
+
+header div{
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+}
+
+.guardar{
+      margin: 20px 20px;
+      padding: 6px 20px;
+      border-radius: 5px;
+      border: none;
+      color: #063F3A;
+      font-weight: 700;
+      font-size: 1em;
+}
+.iconEmpresa{
+       justify-content:start
 }
