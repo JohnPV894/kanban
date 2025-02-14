@@ -1,4 +1,3 @@
-
 *{
 
       margin: 0;
@@ -6,6 +5,9 @@
       font-family: 'Inter', sans-serif;
 }
 body{
+            min-height: 100vh;
+      display: flex;
+      flex-direction: column;
       min-height: 100vh;
       width: 100%;
 }
@@ -14,6 +16,7 @@ header{
       background: #063F3A;
 }
 footer{
+      height: 2vh;
       width: 100%;
       color: rgb(255, 255, 255);
       background: black;
@@ -23,7 +26,8 @@ footer{
 /**/
 
 .contenedor{
-      
+      flex: 1; /* Esto hace que el contenido crezca y empuje el footer hacia abajo */
+      height: 77vh;
       width: 100%;
       display: grid;
       grid-template-columns: repeat(4,1fr);
@@ -31,6 +35,8 @@ footer{
       padding: 6em 0em 1em 0em;
 }
 .contenedor>div{
+      display: flex;
+      flex-direction: column;
       margin: 0px 20px;
       border-radius: 15px;
       color: #032b27;
@@ -39,7 +45,7 @@ footer{
 }
 /*Boton de agregar Tareas*/
 #contenedorBoton{
-      
+
       margin-top: 1em;
       display: flex;
       justify-content: center;
@@ -47,6 +53,8 @@ footer{
       border: none;
 }
 #botonAgregarTarjeta{
+      width: 100%;
+      max-height: 90px;
       background: #34942bd3;
       border: none;
       border-radius: 10em;
@@ -92,9 +100,13 @@ header div{
       font-size: 1em;
 }
 .iconEmpresa{
+
        justify-content:start
 }
-
+.iconEmpresa img{
+      width: 100px;
+      margin-left: 2em;
+}
 /*FORMULARIO DESPLEGABLE CREAR TAREA*/
 .contenedorFormulario{
       height: 100vh;
@@ -113,3 +125,30 @@ header div{
       width: 25%;
       padding: 20px 30px;
 }
+@media (min-width: 1025px) { 
+      /* Estilos para escritorio */ 
+      
+    }
+@media (min-width: 481px) and (max-width: 1024px) { 
+      /* Estilos para tablets */ 
+    }
+
+@media (max-width: 480px) { 
+      /* Estilos para móviles */ 
+      body{
+            width: 100%;
+      }
+      .contenedor{
+            grid-template-columns: repeat(2,1fr);
+            padding: 1em 0em 1em 0em;
+      }
+      .contenedor>div{
+            margin: 20px 10px;
+            border-radius: 15px;
+            color: #032b27;
+            border:#3B9A33 solid 4px;
+            background: white;
+      }
+      }
+
+    

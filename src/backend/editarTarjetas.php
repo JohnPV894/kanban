@@ -32,8 +32,13 @@ $coleccion_sesiones= $BD_kanban->selectCollection("tablero");
 #} 
 
 #Verificar que se solicite una peticion POST al servidor
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+      $id = $_POST["id"];
+      $titulo = $_POST["nombre"];
+      $descripcion = $_POST["descripcion"];
+      
+}
 
-#Recuperar y validar que todos los campos tengan strings Validos
 
 #Hacer una consulta a la bd datos reemplazamos todos los datos por los nuevos datos donde la ID sea igual que la id que recibe  
 /*

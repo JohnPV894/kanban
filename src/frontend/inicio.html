@@ -11,7 +11,7 @@
       <header>
             
             <div>
-                  <div class="iconEmpresa"><img src="" alt="Logo De La Empresa '' " ></div>
+                  <div class="iconEmpresa"><img src="img/elevate.png" alt="Logo De La Empresa '' " ></div>
                   <!--<div class="iconCuenta"><img src="img/user.png" alt="Cuenta"></div>-->
                   <div class="menuDesplegable">
                         <ul>
@@ -28,17 +28,21 @@
       </header>
 
       <div class="contenedor">
-            <div class="idea"><h2>IDEA</h2></div>
+            <div class="idea"><h2>IDEA</h2>
+                  <div id="contenedorBoton">
+                        <button id="botonAgregarTarjeta"><img src="img/agregar.png" alt="" ></button>
+                  </div>
+            </div>
             <div class="todo"><h2>TO DO</h2></div>
             <div class="doing"><h2>DOING</h2></div>
             <div class="done"><h2>DONE</h2></div>
-            <div id="contenedorBoton"><button id="botonAgregarTarjeta"><img src="img/agregar.png" alt="" ></button></div>
+            
       </div>
       <footer>
             FIN @copyright
       </footer>
       <br>
-      <div class="contenedorFormulario" >
+      <div class="contenedorFormulario" style="display: none;">
             <form action="/src/backend/crearTarjetas.php" method="post">
                   <h1>Creando Nueva Tarea</h1>
                   <h3>Titulo</h3>
