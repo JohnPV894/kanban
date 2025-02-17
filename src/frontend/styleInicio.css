@@ -5,10 +5,10 @@
       font-family: 'Inter', sans-serif;
 }
 body{
-            min-height: 100vh;
+      height: 100vh;
       display: flex;
       flex-direction: column;
-      min-height: 100vh;
+
       width: 100%;
 }
 header{
@@ -16,7 +16,8 @@ header{
       background: #063F3A;
 }
 footer{
-      height: 2vh;
+      height: vh;
+      margin-bottom: 0;
       width: 100%;
       color: rgb(255, 255, 255);
       background: black;
@@ -26,8 +27,8 @@ footer{
 /**/
 
 .contenedor{
-      flex: 1; /* Esto hace que el contenido crezca y empuje el footer hacia abajo */
-      height: 77vh;
+       /* Esto hace que el contenido crezca y empuje el footer hacia abajo */
+      height: 70vh;
       width: 100%;
       display: grid;
       grid-template-columns: repeat(4,1fr);
@@ -44,21 +45,16 @@ footer{
       background: white;
 }
 /*Boton de agregar Tareas*/
-#contenedorBoton{
-
-      margin-top: 1em;
-      display: flex;
-      justify-content: center;
-      background: fixed;
-      border: none;
-}
 #botonAgregarTarjeta{
-      width: 100%;
-      max-height: 90px;
+      width: 19%;
+      margin: 20px 20px;
+      padding: 13px 26px;
       background: #34942bd3;
       border: none;
-      border-radius: 10em;
-      padding: 10px;
+      border-radius: 5px;
+      color: white;
+      font-weight: 700;
+      font-size: 1em;
 }
 #botonAgregarTarjeta:hover{
       cursor: pointer;
@@ -68,7 +64,7 @@ footer{
       background: #48ca3cd3;
 }
 #botonAgregarTarjeta img{
-      height: 64px;
+      height: 32px;
 }
 /**/
 .contenedor>div>h2{
@@ -91,8 +87,9 @@ header div{
 }
 
 .guardar{
+      width: 19%;
       margin: 20px 20px;
-      padding: 6px 20px;
+      padding: 13px 26px;
       border-radius: 5px;
       border: none;
       color: #063F3A;
@@ -100,18 +97,17 @@ header div{
       font-size: 1em;
 }
 .iconEmpresa{
-
        justify-content:start
 }
 .iconEmpresa img{
-      width: 100px;
+      width: 120px;
       margin-left: 2em;
 }
 /*FORMULARIO DESPLEGABLE CREAR TAREA*/
 .contenedorFormulario{
       height: 100vh;
       width: 100%;
-      background: rgba(0, 0, 0, 0.671);
+      background: rgba(17, 16, 16, 0.822);
       position: absolute;
       bottom: 0;
       display: flex;
@@ -139,8 +135,13 @@ header div{
             width: 100%;
       }
       .contenedor{
-            grid-template-columns: repeat(2,1fr);
+            grid-template-columns: repeat(4,260px);
             padding: 1em 0em 1em 0em;
+
+
+            overflow-x: scroll;
+
+
       }
       .contenedor>div{
             margin: 20px 10px;
@@ -148,6 +149,51 @@ header div{
             color: #032b27;
             border:#3B9A33 solid 4px;
             background: white;
+      }
+      .contenedorFormulario form{
+            border: 3px solid #0a312d;
+            border-radius: 5px;
+            width: 100%;
+            margin: 0px 15px;
+      }
+      .contenedorFormulario form h1{
+            font-size: 40px;
+            text-align: center;
+            margin-bottom: 20px;
+      }
+      .contenedorFormulario h3{
+            margin-top: 15px;
+            font-size: 20px;
+      }
+      .contenedorFormulario textarea,.contenedorFormulario form input{
+            width: 100%;
+            padding: 8px 0px;
+            border-radius: 5px;
+            border: none;
+      }
+      #enviarFormulario ,#cancelarFormulario{
+            width: 45%;
+            font-size: 16px;
+            padding: 7px 15px;
+            border-radius: 5px;
+            border: none;
+      }
+      #enviarFormulario{
+            background: #043530;
+            color: white;
+      }
+      #cancelarFormulario{
+            background: white;
+            color: #032b27;
+      }
+      
+      .botones{
+            justify-content: space-around;
+            display: flex;
+      }
+      /*EFECTOS DE BOTONES FORMULARIO*/
+      .enviarFormulario:active{
+            background: #0da091;
       }
       }
 

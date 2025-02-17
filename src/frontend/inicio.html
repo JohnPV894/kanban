@@ -1,3 +1,4 @@
+<?php require_once '../backend/autentificar.php'; ?> 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +9,7 @@
       <title>Document</title>
 </head>
 <body>
+      <form action="../backend/autentificar.php" ></form>
       <header>
             
             <div>
@@ -23,17 +25,18 @@
                         </ul>
 
                   </div>
+                  <button id="botonAgregarTarjeta">NUEVA TAREA</button>
                   <input type="button" value="SAVE" class="guardar">
+                  
+
             </div>
       </header>
 
       <div class="contenedor">
             <div class="idea"><h2>IDEA</h2>
-                  <div id="contenedorBoton">
-                        <button id="botonAgregarTarjeta"><img src="img/agregar.png" alt="" ></button>
-                  </div>
+                  
             </div>
-            <div class="todo"><h2>TO DO</h2></div>
+            <div class="todo"><h2>TO-DO</h2></div>
             <div class="doing"><h2>DOING</h2></div>
             <div class="done"><h2>DONE</h2></div>
             
@@ -42,25 +45,31 @@
             FIN @copyright
       </footer>
       <br>
-      <div class="contenedorFormulario" style="display: none;">
+      <div class="contenedorFormulario" style="display: none;" >
+            
+            <!--  style="display: none;"-->
             <form action="/src/backend/crearTarjetas.php" method="post">
-                  <h1>Creando Nueva Tarea</h1>
+                  <h1>Creando Tarea</h1>
                   <h3>Titulo</h3>
-                  <input type="text" placeholder="titulo" name="nombre">
+                  <input type="text" placeholder="titulo" name="nombre" class="nombre" required>
                   <h3>Descripcion</h3>
-                  <textarea name="descripcion"  placeholder="descripcion" id=""></textarea>
+                  <textarea name="descripcion"  placeholder="descripcion" class="descripcion" required></textarea>
 
                   <h3>Estado</h3>
-                  <input type="text" placeholder="estado" name="estado">
-                  <h3>None</h3>
-                  <input type="date" placeholder="va"><input type="date" placeholder="Fecha De Fin">
+                  <input type="text" value="idea" name="estado" disabled>
+                  <h3>FF</h3>
+                  <div>
+                        <input type="date" id="dateInicio"><input type="date" id="dateFin">
+                  </div>
                   <h3>Participantes</h3>
                   <select name="participantes[]" id="selectParticipantes"  multiple>
                         <!---->
                   </select>
- 
-                  <input type="submit" value="Enviar">
-                  <input type="reset" value="Cancelar" id="cancelarFormulario">
+                  <div class="botones">
+                        <input type="submit" value="Enviar" id="enviarFormulario">
+                        <input type="reset" value="Cancelar" id="cancelarFormulario">
+                  </div>
+                  
             </form>
       </div>
 

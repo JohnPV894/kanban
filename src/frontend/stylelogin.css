@@ -20,7 +20,7 @@ form{
       width: 22%;
       border-radius: 10px;
       font-size: 2.3em;
-      box-shadow: 1px 0.5px 2px ;
+      box-shadow: 0.5px 0.5px 5px ;
       display: flex;
       align-items: center;
       flex-direction: column;
@@ -32,6 +32,21 @@ form{
       margin: 5em 0em;
       justify-content: center;
       width: 100%;
+}
+/*CONTENEDOR LOGO*/
+.logoContenedor {
+
+    width: 140px; 
+    height: 140px;
+    border-radius: 50%; 
+}
+
+/* Imagen dentro del contenedor */
+.logoContenedor img {
+    width: 100%; 
+    height: 100%;
+    object-fit: cover; /* Asegura que la imagen cubra sin deformarse */
+    border-radius: 50%;  
 }
 div>form>h6{
       font-weight:light;
@@ -47,18 +62,117 @@ form>input{
       border: solid 1px rgba(52, 71, 44, 0.856);
 }
 .submit{
-
+      cursor: pointer;
       align-self: flex-start;
-      color: rgb(5, 204, 5);
+      color: rgb(255, 255, 255);
       border: solid 1px rgb(5, 204, 5);
-      background: none;
+      background: rgb(5, 204, 5);
       font-weight: 800;
 }
 .submit:hover{
-      color: rgb(255, 255, 255);
-      border: solid 1px rgb(255, 255, 255);
-      background: rgb(5, 204, 5);
+      color: rgb(5, 204, 5);
+      border: solid 1px rgb(5, 204, 5);
+      background: rgb(255, 255, 255);
 }
+/*LINK A FORMULARIO DE REGISTRO*/
+#registrarseContenedor{
+      font-weight: 100;
+      color: rgb(107, 107, 107);
+}
+#registrarseContenedor a{
+      color: rgb(5, 204, 5);
+      cursor: pointer;
+      text-decoration: none;
+}
+#registrarseContenedor a:hover {
+      color: rgb(0, 150, 0); 
+      text-decoration: underline; 
+}
+#registrarseContenedor a:active {
+      color: rgb(0, 100, 0); 
+}
+    
 form>div{
       padding: 15%;
+}
+
+@media (min-width: 1025px) { 
+
+      form{
+            width: 30%;
+            height: 75vh;
+            padding: 5px 15px;
+      }
+      form>.logoContenedor{
+            padding: 5%;
+            padding-bottom: 8%;
+            width: 160px;
+            height: 160px;
+      }
+      .contenedorFormulario form h6{
+            font-size: 30px;
+            font-weight: 700;
+            margin-top: 10px;
+      }
+      .contenedorFormulario input{
+
+            font-size: 18px;
+      }
+      .submit{
+            margin-bottom: 0;
+
+      }
+      #registrarseContenedor{
+            font-weight: 100;
+            font-size: 22px;
+      }
+}
+@media (min-width: 481px) and (max-width: 1024px) { 
+      /* Estilos para tablets */ 
+    }
+
+@media (max-width: 480px) { 
+      *{
+            margin: 0;
+            padding: 0;
+      }
+      body{
+            width: 100%;
+            height: 100vh;
+      }
+      .contenedorFormulario{
+            width: 100%;
+            margin-top: 2.5em;
+      }
+      .contenedorFormulario form{
+            width: 80%;
+            
+      }
+      .contenedorFormulario form div{
+            font-size: 35px;
+            font-weight: 800;
+            padding: 35px 0px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+      }
+      .contenedorFormulario form h6{
+            margin-top: 20px;
+            font-weight: 500;
+      }
+      .contenedorFormulario input{
+            
+            font-size: 18px;
+      }
+      #registrarseContenedor{
+            display: flex;
+            font-size: 20px;
+            font-weight: 100;
+            color: rgb(71, 71, 71);
+      }
+      /*CONTENEDOR DE IMAGEN */
+      .logoContenedor img{
+            border: 5px solid rgb(6, 63, 58);
+      }
 }

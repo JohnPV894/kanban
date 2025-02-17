@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       };
 
       $nuevaTarjeta=array(
-            "propietario" =>$propietarioTarjeta,
+            "creador" =>$propietarioTarjeta,
             "nombre"=> $nombreTarjeta,
             "descripcion"=> $descripcionTarjeta,
             "estado"=> $estadoTarjeta,
