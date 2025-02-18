@@ -1,46 +1,58 @@
 <?php
+require __DIR__ . "/../../vendor/autoload.php";
 
-require __DIR__ ."/../../vendor/autoload.php";
+$clienteMongoDB = new MongoDB\Client("mongodb+srv://santiago894:P5wIGtXue8HvPvli@cluster0.6xkz1.mongodb.net/");
+$BD_kanban = $clienteMongoDB->selectDatabase("kanban");
+$coleccion_tarjetas = $BD_kanban->selectCollection("tablero");
 
-$clienteMongoDB = new MongoDB\Client("mongodb+srv://santiago894:P5wIGtXue8HvPvli@cluster0.6xkz1.mongodb.net/");;
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["idEditar"])) {
+    $idTarjeta = $_POST["idEditar"];
+    $nombre = $_POST["nombre"] ?? null;
+    $descripcion = $_POST["descripcion"] ?? null;
+    $estado = $_POST["estado"] ?? null;
+    $participantes = $_POST["participantes"] ?? null;
 
-try{ 
-      $dbs = $clienteMongoDB->listDatabases(); 
-      #echo "conecto correctamente";
-}
-catch(Exception $e){
-      echo "fallo al conectar a mongo";
-      exit();
-}
-/*
-if (!class_exists('MongoDB\BSON\ObjectId')) {
-      die('La clase MongoDB\BSON\ObjectId no está disponible.');
-  }
-*/
-$BD_kanban= $clienteMongoDB->selectDatabase("kanban");
-$coleccion_sesiones= $BD_kanban->selectCollection("tablero");
-
-#if ($_SERVER["REQUEST_METHOD"] === "POST") {
-      $id = trim("67a4fd87ac86dba1082add60");
-
-      $idTarjeta = new MongoDB\BSON\ObjectId($id);
-
-      
-      echo json_encode( $coleccion_sesiones->findOne(["_id"=>$idTarjeta]) );
-      #header("Location: http://localhost:3000/src/frontend/inicio.html");
-      exit;
-#} 
-
-#Verificar que se solicite una peticion POST al servidor
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-      $id = $_POST["id"];
-      $titulo = $_POST["nombre"];
-      $descripcion = $_POST["descripcion"];
-      
+    if (editarTarjeta($coleccion_tarjetas, $idTarjeta, $nombre, $descripcion, $estado, $participantes)) {
+        header("Location: http://localhost:3000/src/frontend/inicio.html");
+        exit;
+    } else {
+        echo "No se pudo actualizar la tarjeta.";
+    }
+} else {
+    echo "Solicitud inválida.";
 }
 
+function editarTarjeta($coleccion, $idString, $nombre, $descripcion, $estado, $participantes) {
+    if (empty($idString)) {
+        echo "El ID proporcionado está vacío.";
+        return false;
+    }
 
-#Hacer una consulta a la bd datos reemplazamos todos los datos por los nuevos datos donde la ID sea igual que la id que recibe  
-/*
- */
+    try {
+        $idObjeto = new MongoDB\BSON\ObjectId($idString);
+
+        // Crear un array con los campos a actualizar
+        $datosActualizar = [];
+        if ($nombre !== null) $datosActualizar["nombre"] = $nombre;
+        if ($descripcion !== null) $datosActualizar["descripcion"] = $descripcion;
+        if ($estado !== null) $datosActualizar["estado"] = $estado;
+        if ($participantes !== null) $datosActualizar["participantes"] = $participantes;
+
+        if (empty($datosActualizar)) {
+            echo "No hay datos para actualizar.";
+            return false;
+        }
+
+        $resultado = $coleccion->updateOne(
+            ["_id" => $idObjeto], 
+            ['$set' => $datosActualizar]
+        );
+
+        return $resultado->getModifiedCount() > 0;
+    } catch (Exception $e) {
+        echo "Error al actualizar la tarjeta: " . $e->getMessage();
+        return false;
+    }
+}
+header("Location: http://localhost:3000/src/frontend/inicio.html");
 ?>

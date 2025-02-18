@@ -35,9 +35,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             "estado"=> $estadoTarjeta,
             "participantes"=> $participantesTarjeta //Objetivo almacenar una lista de _id de las sesiones asosiadas a estar tarjeta
       );
-      echo json_encode($nuevaTarjeta);
+      #echo json_encode($nuevaTarjeta);
       $coleccion_sesiones->insertOne($nuevaTarjeta);
-
+      
+      
       header("Location: http://localhost:3000/src/frontend/inicio.html");
       exit;
 } 

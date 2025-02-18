@@ -1,4 +1,4 @@
-<?php require_once '../backend/autentificar.php'; ?> 
+<!-- <?php require_once '../backend/autentificar.php'; ?>  -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,24 +9,17 @@
       <title>Document</title>
 </head>
 <body>
+      <var></var>
       <form action="../backend/autentificar.php" ></form>
       <header>
             
             <div>
                   <div class="iconEmpresa"><img src="img/elevate.png" alt="Logo De La Empresa '' " ></div>
                   <!--<div class="iconCuenta"><img src="img/user.png" alt="Cuenta"></div>-->
-                  <div class="menuDesplegable">
-                        <ul>
-                              <li>
-                                    <a href="">A</a>
-                                    <a href="">A</a>
-                                    <a href="">A</a>
-                              </li>
-                        </ul>
-
-                  </div>
+                  
+                  <form action="../backend/cerrarSesion.php" method="GET" id="contenedorCerrarSesion"><input type="submit" value="CERRAR SESION" id="cerrarSesion"></form>
                   <button id="botonAgregarTarjeta">NUEVA TAREA</button>
-                  <input type="button" value="SAVE" class="guardar">
+                  <input type="button" value="GUARDAR" class="guardar">
                   
 
             </div>
@@ -45,7 +38,7 @@
             FIN @copyright
       </footer>
       <br>
-      <div class="contenedorFormulario" style="display: none;" >
+      <div class="contenedorFormulario"  style="display: none;"  >
             
             <!--  style="display: none;"-->
             <form action="/src/backend/crearTarjetas.php" method="post">
@@ -57,7 +50,7 @@
 
                   <h3>Estado</h3>
                   <input type="text" value="idea" name="estado" disabled>
-                  <h3>FF</h3>
+                  <h3>Fecha actual</h3>
                   <div>
                         <input type="date" id="dateInicio"><input type="date" id="dateFin">
                   </div>
@@ -68,6 +61,33 @@
                   <div class="botones">
                         <input type="submit" value="Enviar" id="enviarFormulario">
                         <input type="reset" value="Cancelar" id="cancelarFormulario">
+                  </div>
+                  
+            </form>
+      </div>
+      <div class="contenedorFormularioEditar"  style="display: none;"  >
+            
+            <!--  style="display: none;"-->
+            <form action="/src/backend/crearTarjetas.php" method="post">
+                  <h1>Creando Tarea</h1>
+                  <h3>Titulo</h3>
+                  <input type="text" placeholder="titulo" name="nombre" class="nombre" required>
+                  <h3>Descripcion</h3>
+                  <textarea name="descripcion"  placeholder="descripcion" class="descripcion" required></textarea>
+
+                  <h3>Estado</h3>
+                  <input type="text" value="idea" name="estado">
+                  <h3>Fecha actual</h3>
+                  <div>
+                        <input type="date" id="dateInicio"><input type="date" id="dateFin">
+                  </div>
+                  <h3>Participantes</h3>
+                  <select name="participantes[]" id="selectParticipantes"  multiple>
+                        <!---->
+                  </select>
+                  <div class="botones">
+                        <input type="submit" value="Enviar" id="enviarFormulario">
+                        <input type="reset" value="Cancelar" id="cancelarFormularioEditar">
                   </div>
                   
             </form>

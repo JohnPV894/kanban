@@ -23,67 +23,47 @@ $(document).ready(async function () {
       //console.log(phpJSON[0] );
       //$(".cuerpo").append(JSON.stringify(phpJSON));
       for (let i = 0; i < phpJSON.length; i++) {
-            console.log(phpJSON[i].estado.toLowerCase().trim());
+            console.log(phpJSON[i]);
             
-            //console.log(JSON.stringify(phpJSON[i].estado))
+            let tarjetaHTML = `
+                  <div class="tarea">
+                        
+                        <div class="nombre">${phpJSON[i].nombre}</div>
+                        <div class="descripcion" >${phpJSON[i].descripcion}</div>
+                        <div class="estado" >${phpJSON[i].estado}</div>
+                        <div class="contenedorCreador">creador: <var class="creador">${phpJSON[i].creador}</var></div>
+                        
+                        
+                        <div class="participantes" >${phpJSON[i].participantes}</div>
+      
+                        <div class="contenedorEditarFormulario">
+                              <input type="button" value="Editar" id="editarFormulario">
+                              <form action="/src/backend/eliminarTarjeta.php" method="post">
+                              <input type="hidden" value="${phpJSON[i]._id["$oid"]}" name="idEliminar" >
+                              <input type="submit" value="Eliminar" id="eliminarFormulario">
+                              </form>
+                        </div>
+
+                  </div>
+            `;
+      
             switch (phpJSON[i].estado.toLowerCase().trim()) {
                   case "idea":
-                        $(".idea").append(`
-                              <div class="tarea">
-                              <div class="nombre">${phpJSON[i].nombre}</div>
-                              <div class="estado" style="display:none;">${phpJSON[i].estado}</div>
-                              <div class="creador">${phpJSON[i].propietario}</div>
-                              <div class="descripcion" style="display:none;>${phpJSON[i].descripcion}</div>
-                              <div class="participantes" style="display:none;>${phpJSON[i].participantes}</div>
-                              <input type="button" value="editar">
-                              </div>
-                              `);
+                        $(".idea").append(tarjetaHTML);
                         break;
-
                   case "to do":
-                        $(".todo").append(`
-                              <div class="tarea">
-                              <div class="nombre">${phpJSON[i].nombre}</div>
-                              <div class="estado" style="display:none;">${phpJSON[i].estado}</div>
-                              <div class="creador">${phpJSON[i].creador}</div>
-                              <div class="descripcion" style="display:none;>${phpJSON[i].descripcion}</div>
-                              <div class="participantes" style="display:none;>${phpJSON[i].participantes}</div>
-                              <input type="button" value="editar">
-                              </div>
-                              `);
+                        $(".todo").append(tarjetaHTML);
                         break;
-
                   case "doing":
-                        $(".doing").append(`
-                              <div class="tarea">
-                              <div class="nombre">${phpJSON[i].nombre}</div>
-                              <div class="estado" style="display:none;">${phpJSON[i].estado}</div>
-                              <div class="creador">${phpJSON[i].creador}</div>
-                              <div class="descripcion" style="display:none;>${phpJSON[i].descripcion}</div>
-                              <div class="participantes" style="display:none;>${phpJSON[i].participantes}</div>
-                              <input type="button" value="editar">
-                              </div>
-                              `);
+                        $(".doing").append(tarjetaHTML);
                         break;
-
                   case "done":
-                        $(".done").append(`
-                              <div class="tarea">
-                              <div class="nombre">${phpJSON[i].nombre}</div>
-                              <div class="estado" style="display:none;">${phpJSON[i].estado}</div>
-                              <div class="creador">${phpJSON[i].creador}</div>
-                              <div class="descripcion" style="display:none;>${phpJSON[i].descripcion}</div>
-                              <div class="participantes" style="display:none;>${phpJSON[i].participantes}</div>
-                              <div><input type="button" value="editar" class="editar" placeholder="editar"></div>
-                              </div>
-                              `);
+                        $(".done").append(tarjetaHTML);
                         break;
                   default:
-                        console.error("la tarjeta de nombre:"+phpJSON[i].nombre+"Con _id"+phpJSON[i]._id+" Tiene un estado invalido");
-
+                        console.error(`La tarjeta "${phpJSON[i].nombre}" con _id "${phpJSON[i]._id}" tiene un estado inválido`);
                         break;
             }
-            
       }
       for (let i = 0; i < phpParticipantes.length; i++) {
 
@@ -99,42 +79,46 @@ $(document).ready(async function () {
             $(".contenedorFormulario").fadeOut();
             
       });
+      $("#enviarFormulario").click(function (e) { 
+            $(".contenedorFormulario").fadeOut();
+            window.location.reload();
+      });
 
       //FORMULARIO DE EDITAR TAREA
-      $("#botonEditarTarjeta").click(function (e) { 
-            let nombre  = $(".nombre").val();
-            let creador = $(".creador").val();
-            let estado = $(".estado").val();
-            let descripcion = $(".descripcion").val();
-            let participantes  = $(".participantes").val();
-            $("body").append(`
-            <div class="contenedorFormulario">
-                  <form action="/src/backend/editarTarjetas.php" method="POST">
-                        <h1>Creando Nueva Tarea</h1>
-                        <h3>Titulo</h3>
-                        <input type="text" placeholder="${nombre}" name="nombre">
-                        <h3>Descripcion</h3>
-                        <textarea name="descripcion"  placeholder="${descripcion}" id=""></textarea>
-
-                        <h3>Estado</h3>
-                        <input type="text" placeholder="estado" name="${estado}">
-                        <h3>FF</h3>
-                        <input type="date" placeholder="va"><input type="date" placeholder="Fecha De Fin">
-                        <h3>Participantes</h3>
-                        <select name="participantes[]" id="selectParticipantes"  multiple>
-                              <!---->
-                        </select>
-                  
-                        <input type="submit" value="Enviar">
-                        <input type="reset" value="Cancelar" id="cancelarFormulario">
-                  </form>
-            </div>
-            `);
-            $(".contenedorFormulario").fadeIn();
+      $("#editarFormulario").click(function (e) { 
+            //let nombre  = $(".nombre").val();
+            //let creador = $(".creador").val();
+            //let estado = $(".estado").val();
+            //let descripcion = $(".descripcion").val();
+            //let participantes  = $(".participantes").val();
+            //$("body").append(`
+            //<div class="contenedorFormulario">
+            //      <form action="/src/backend/editarTarjetas.php" method="POST">
+            //            <h1>Creando Nueva Tarea</h1>
+            //            <h3>Titulo</h3>
+            //            <input type="text" placeholder="${nombre}" name="nombre">
+            //            <h3>Descripcion</h3>
+            //            <textarea name="descripcion"  placeholder="${descripcion}" id=""></textarea>
+//
+            //            <h3>Estado</h3>
+            //            <input type="text" placeholder="estado" name="${estado}">
+            //            <h3>FF</h3>
+            //            <input type="date" placeholder="va"><input type="date" placeholder="Fecha De Fin">
+            //            <h3>Participantes</h3>
+            //            <select name="participantes[]" id="selectParticipantes"  multiple>
+            //                  <!---->
+            //            </select>
+            //      
+            //            <input type="submit" value="Enviar">
+            //            <input type="reset" value="Cancelar" id="cancelarFormulario">
+            //      </form>
+            //</div>
+            //`);
+            $(".contenedorFormularioEditar").fadeIn();
             
       });
-      $("#cancelarFormulario").click(function (e) { 
-            $(".contenedorFormulario").fadeOut();
+      $("#cancelarFormularioEditar").click(function (e) { 
+            $(".contenedorFormularioEditar").fadeOut();
             
       });
 

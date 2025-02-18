@@ -5,21 +5,21 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <link rel="stylesheet" href="stylelogin.css">
       <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-      <title>Inicio De Sesion</title>
+      <title>REGISTRATE</title>
 </head>
 <body>
 
       <header>""</header>
       <div class="contenedorFormulario">
-            <form action="/src/backend/login.php" method="POST">
+            <form action="/src/backend/registrarse.php" method="POST">
                   <div class="logoContenedor"><img src="img/elevate.png" alt=""></div>
                   <h6>USUARIO</h6>
-                  <input type="text" placeholder="usuario" name="usuario" required>
+                  <input type="text" placeholder="Elige Usuario:" name="usuario" required>
                   <h6>CONTRASEÑA</h6>
-                  <input type="text" placeholder="contraseña" name="clave" required>
+                  <input type="text" placeholder="Elige Contraseña:" name="clave" required>
                   
-                  <input type="submit" placeholder="Enviar" class="submit"> 
-                  <div id="registrarseContenedor">¿No tienes cuenta?<a href="http://localhost:3000/src/frontend/registro.html">Registrate aqui</a></div>     
+                  <input type="submit" value="RESGISTRARSE" class="submit"> 
+                  <div id="registrarseContenedor">¿YA tienes cuenta?<a href="http://localhost:3000/src/frontend/login.html">Ir al Login</a></div> 
             </form>
       </div>
       

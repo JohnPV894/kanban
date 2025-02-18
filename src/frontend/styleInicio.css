@@ -66,6 +66,31 @@ footer{
 #botonAgregarTarjeta img{
       height: 32px;
 }
+/*BOTONES DE EDICION*/
+.contenedorEditarFormulario{
+      display: flex;
+
+}
+#editarFormulario{
+
+            margin: 20px 20px;
+            padding: 13px 26px;
+            background: #34942bd3;
+            border: none;
+            border-radius: 5px;
+            color: white;
+
+
+}
+/*BOTON ELIMINAR*/
+#eliminarFormulario {
+ margin: 20px 20px;
+ padding: 13px 26px;
+ background: red;
+ color: white;
+ border-radius: 5px;
+}
+
 /**/
 .contenedor>div>h2{
       text-align: center;
@@ -86,7 +111,7 @@ header div{
       justify-content: flex-end;
 }
 
-.guardar{
+.guardar {
       width: 19%;
       margin: 20px 20px;
       padding: 13px 26px;
@@ -95,6 +120,28 @@ header div{
       color: #063F3A;
       font-weight: 700;
       font-size: 1em;
+}
+#contenedorCerrarSesion{
+      display: flex;
+      justify-content: end;
+      width: 100%;
+}
+#cerrarSesion{
+      width: 25%;
+      margin: 20px 20px;
+      padding: 12px 26px;
+      border-radius: 5px;
+      border: none;
+      color: #063F3A;
+      font-weight: 700;
+      font-size: 1em;
+}
+/*BOTON EN FORMA BLANCO*/
+#cerrarSesion,.guardar{
+      cursor: pointer;
+}
+#cerrarSesion:hover,.guardar:hover{
+      background: rgb(175, 175, 175);
 }
 .iconEmpresa{
        justify-content:start
@@ -123,10 +170,132 @@ header div{
 }
 @media (min-width: 1025px) { 
       /* Estilos para escritorio */ 
+
+      .contenedor>div{
+            margin: 20px 10px;
+            border-radius: 15px;
+            color: #032b27;
+            border:#3B9A33 solid 4px;
+            background: white;
+      }
+      .contenedorFormulario form{
+            border: 3px solid #0a312d;
+            border-radius: 5px;
+            width: 50%;
+            margin: 0px 15px;
+      }
+      .contenedorFormulario form h1{
+            font-size: 40px;
+            text-align: center;
+            margin-bottom: 20px;
+      }
+      .contenedorFormulario h3{
+            margin-top: 15px;
+            font-size: 20px;
+      }
+      .contenedorFormulario textarea,.contenedorFormulario form input{
+            width: 100%;
+            padding: 8px 0px;
+            border-radius: 5px;
+            border: none;
+      }
+      #enviarFormulario ,#cancelarFormulario{
+            width: 45%;
+            font-size: 16px;
+            padding: 7px 15px;
+            border-radius: 5px;
+            border: none;
+      }
+      #enviarFormulario{
+            background: #043530;
+            color: white;
+      }
+      #cancelarFormulario{
+            background: white;
+            color: #032b27;
+      }
+      
+      .botones{
+            justify-content: space-around;
+            display: flex;
+      }
+      /*EFECTOS DE BOTONES FORMULARIO*/
+      .enviarFormulario:active{
+            background: #0da091;
+      }
       
     }
 @media (min-width: 481px) and (max-width: 1024px) { 
       /* Estilos para tablets */ 
+      
+       body{
+            width: 100%;
+      }
+      /*BOTON CERRAR SESION*/
+      #cerrarSesion{
+            width: 65%;
+      }
+      .contenedor{
+            grid-template-columns: repeat(4,260px);
+            padding: 1em 0em 1em 0em;
+
+
+            overflow-x: scroll;
+
+
+      }
+      .contenedor>div{
+            margin: 20px 10px;
+            border-radius: 15px;
+            color: #032b27;
+            border:#3B9A33 solid 4px;
+            background: white;
+      }
+      .contenedorFormulario form{
+            border: 3px solid #0a312d;
+            border-radius: 5px;
+            width: 100%;
+            margin: 0px 15px;
+      }
+      .contenedorFormulario form h1{
+            font-size: 40px;
+            text-align: center;
+            margin-bottom: 20px;
+      }
+      .contenedorFormulario h3{
+            margin-top: 15px;
+            font-size: 20px;
+      }
+      .contenedorFormulario textarea,.contenedorFormulario form input{
+            width: 100%;
+            padding: 8px 0px;
+            border-radius: 5px;
+            border: none;
+      }
+      #enviarFormulario ,#cancelarFormulario{
+            width: 45%;
+            font-size: 16px;
+            padding: 7px 15px;
+            border-radius: 5px;
+            border: none;
+      }
+      #enviarFormulario{
+            background: #043530;
+            color: white;
+      }
+      #cancelarFormulario{
+            background: white;
+            color: #032b27;
+      }
+      
+      .botones{
+            justify-content: space-around;
+            display: flex;
+      }
+      /*EFECTOS DE BOTONES FORMULARIO*/
+      .enviarFormulario:active{
+            background: #0da091;
+      }
     }
 
 @media (max-width: 480px) { 
